@@ -1,28 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SourceChord.FluentWPF;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ApolloBrowser
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : AcrylicWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Loaded += new RoutedEventHandler(MainWindow_Loaded);
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            Viewer.DocumentText = "Hello World!";
+        }
+
+        private void MetroWindow_Closed(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string url = "https://" + UriInput.Text + "/";
+            Console.WriteLine(url);
+            Viewer.Navigate(url);
         }
     }
 }

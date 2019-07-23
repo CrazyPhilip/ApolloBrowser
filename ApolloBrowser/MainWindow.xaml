@@ -1,12 +1,47 @@
-﻿<Window x:Class="ApolloBrowser.MainWindow"
+﻿<fw:AcrylicWindow x:Class="ApolloBrowser.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        xmlns:wfi="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:wk="clr-namespace:WebKit;assembly=WebKitBrowser"
         xmlns:local="clr-namespace:ApolloBrowser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Apollo Browser" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen" Closed="MetroWindow_Closed"
+        TitleBarMode="Default" Background="#99FFFFFF" fw:PointerTracker.Enabled="True" Icon="./icon_cloud.png">
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <fw:DropShadowPanel Grid.Row="0" ShadowMode="Outer" Background="WhiteSmoke" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Column="0" Height="30" Width="30" Content="-" Style="{StaticResource ButtonRevealStyle}" Background="Transparent" HorizontalAlignment="Right"/>
+                <Button Grid.Column="1" Height="30" Width="30" Content="+" Style="{StaticResource ButtonRevealStyle}" Background="Transparent" HorizontalAlignment="Right"/>
+                <Button Grid.Column="2" Height="30" Width="30" Content="A" Style="{StaticResource ButtonRevealStyle}" Background="Transparent" HorizontalAlignment="Right"/>
+                <TextBox Grid.Column="3" x:Name="UriInput" Height="30" TextWrapping="NoWrap"  Style="{StaticResource TextBoxRevealStyle}" AcceptsReturn="False" FontSize="14"/>
+                <Button Grid.Column="4" x:Name="ConfirmBtn" Height="30" Width="30" Content=">" Style="{StaticResource ButtonRevealStyle}" Background="Transparent" Click="ConfirmBtn_Click"/>
+                <Button Grid.Column="5" Height="30" Width="30" Content="H" Style="{StaticResource ButtonRevealStyle}" Background="Transparent" HorizontalAlignment="Right"/>
+                <Button Grid.Column="6" Height="30" Width="30" Content="· · ·" Style="{StaticResource ButtonRevealStyle}" Background="Transparent" HorizontalAlignment="Right"/>
+            </Grid>
+        </fw:DropShadowPanel>
+
+        <WindowsFormsHost Grid.Row="1" Margin="5">
+            <wk:WebKitBrowser x:Name="Viewer" Dock="Fill"></wk:WebKitBrowser>
+        </WindowsFormsHost>
+
     </Grid>
-</Window>
+</fw:AcrylicWindow>
