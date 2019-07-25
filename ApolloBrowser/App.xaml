@@ -9,6 +9,15 @@
                 <!--  FluentWPF Controls  -->
                 <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Controls.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <ControlTemplate x:Key="SelfMenuItemTemplate" TargetType="{x:Type MenuItem}">
+                <Button Background="Transparent" Height="30" HorizontalContentAlignment="Left"
+                        FontSize="14"
+                        Style="{StaticResource ButtonRevealStyle}" 
+                        Content="{Binding Header, RelativeSource={RelativeSource TemplatedParent}}"/>
+            </ControlTemplate>
+
         </ResourceDictionary>
+        
     </Application.Resources>
 </Application>

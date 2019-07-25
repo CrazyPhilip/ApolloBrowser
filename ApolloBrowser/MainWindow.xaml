@@ -4,13 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
-        xmlns:wfi="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:wk="clr-namespace:WebKit;assembly=WebKitBrowser"
         xmlns:local="clr-namespace:ApolloBrowser"
         mc:Ignorable="d"
         Title="Apollo Browser" Height="450" Width="800"
         WindowStartupLocation="CenterScreen" Closed="MetroWindow_Closed"
         TitleBarMode="Default" Background="#99FFFFFF" fw:PointerTracker.Enabled="True" Icon="./icon_cloud.png">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="ButtonStyle" BasedOn="{StaticResource ButtonRevealStyle}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -28,14 +38,25 @@
                     <ColumnDefinition Width="30"/>
                     <ColumnDefinition Width="30"/>
                 </Grid.ColumnDefinitions>
-                
-                <Button Grid.Column="0" Height="30" Width="30" Content="-" Style="{StaticResource ButtonRevealStyle}" Background="Transparent" HorizontalAlignment="Right"/>
-                <Button Grid.Column="1" Height="30" Width="30" Content="+" Style="{StaticResource ButtonRevealStyle}" Background="Transparent" HorizontalAlignment="Right"/>
-                <Button Grid.Column="2" Height="30" Width="30" Content="A" Style="{StaticResource ButtonRevealStyle}" Background="Transparent" HorizontalAlignment="Right"/>
-                <TextBox Grid.Column="3" x:Name="UriInput" Height="30" TextWrapping="NoWrap"  Style="{StaticResource TextBoxRevealStyle}" AcceptsReturn="False" FontSize="14"/>
-                <Button Grid.Column="4" x:Name="ConfirmBtn" Height="30" Width="30" Content=">" Style="{StaticResource ButtonRevealStyle}" Background="Transparent" Click="ConfirmBtn_Click"/>
-                <Button Grid.Column="5" Height="30" Width="30" Content="H" Style="{StaticResource ButtonRevealStyle}" Background="Transparent" HorizontalAlignment="Right"/>
-                <Button Grid.Column="6" Height="30" Width="30" Content="· · ·" Style="{StaticResource ButtonRevealStyle}" Background="Transparent" HorizontalAlignment="Right"/>
+
+                <Button Grid.Column="0" Content="&#xE72B;" Style="{DynamicResource ButtonStyle}"/>
+                <Button Grid.Column="1" Content="&#xE72A;" Style="{DynamicResource ButtonStyle}"/>
+                <Button Grid.Column="2" Content="&#xE80F;" Style="{DynamicResource ButtonStyle}"/>
+                <TextBox Grid.Column="3" x:Name="UriInput" Height="30" TextWrapping="NoWrap"  
+                         Style="{StaticResource TextBoxRevealStyle}" 
+                         AcceptsReturn="False" FontSize="14"/>
+                <Button Grid.Column="4" x:Name="ConfirmBtn" Content="&#xE72C;" Click="ConfirmBtn_Click" Style="{DynamicResource ButtonStyle}"/>
+                <Button Grid.Column="5" Content="&#xE734;" Style="{DynamicResource ButtonStyle}"/>
+                <Button Grid.Column="6" x:Name="MoreBtn" Content="&#xE712;" Initialized="MoreBtn_Initialized" 
+                        Click="MoreBtn_Click" Style="{DynamicResource ButtonStyle}">
+                    <Button.ContextMenu>
+                        <ContextMenu Name="MoreContextMenu" Width="200">
+                            <MenuItem Header="历史记录" Template="{StaticResource SelfMenuItemTemplate}"/>
+                            <MenuItem Header="关于" Template="{StaticResource SelfMenuItemTemplate}"/>
+                            <MenuItem Header="设置" Template="{StaticResource SelfMenuItemTemplate}"/>
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
             </Grid>
         </fw:DropShadowPanel>
 

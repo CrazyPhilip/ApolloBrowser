@@ -32,5 +32,22 @@ namespace ApolloBrowser
             Console.WriteLine(url);
             Viewer.Navigate(url);
         }
+
+        private void MoreBtn_Initialized(object sender, EventArgs e)
+        {
+            this.MoreBtn.ContextMenu = null;
+        }
+
+        private void MoreBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //目标
+            this.MoreContextMenu.PlacementTarget = this.MoreBtn;
+
+            //位置
+            this.MoreContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+
+            //显示菜单
+            this.MoreContextMenu.IsOpen = true;
+        }
     }
 }
