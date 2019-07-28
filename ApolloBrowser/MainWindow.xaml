@@ -19,11 +19,82 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
+
+        <Style TargetType="{x:Type local:TabItemClose}">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="Foreground" Value="#666666"/>
+            <Setter Property="Margin" Value="0 0 0 0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CloseIcon" Value="/Images/close.png"/>
+            <Setter Property="NormalBackground" Value="White"/>
+            <Setter Property="OverBackgound" Value="#33ca5100"/>
+            <Setter Property="SelectedBackgound" Value="#ca5100"/>
+            <Setter Property="NormalForeground" Value="#555558"/>
+            <Setter Property="OverForeground" Value="White"/>
+            <Setter Property="SelectedForeground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type local:TabItemClose}">
+                        <Border x:Name="_bordertop" Width="{TemplateBinding Width}" MaxWidth="{TemplateBinding MaxWidth}" 
+                                Height="{TemplateBinding Height}" CornerRadius="{TemplateBinding CornerRadius}"  
+                                Background="{TemplateBinding NormalBackground}" BorderThickness="{TemplateBinding BorderThickness}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" ToolTip="{TemplateBinding Header}"  >
+                            <DockPanel>
+                                <Image x:Name="_logo" DockPanel.Dock="Left" Visibility="Visible" Margin="{TemplateBinding LogoPadding}" 
+                                       Source="{TemplateBinding LogoIcon}" VerticalAlignment="Center"  HorizontalAlignment="Center" 
+                                       Stretch="Uniform" Width="{TemplateBinding LogoIconWidth}" Height="{TemplateBinding LogoIconHeigth}" />
+                                <Grid Name="_grid" SnapsToDevicePixels="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition x:Name="_col_close" Width="20" />
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.ColumnSpan="2" Background="White" Opacity="0"/>
+                                    <TextBlock   x:Name="_txt" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"  Margin="3 0 3 0"   
+                                                 Foreground="{TemplateBinding NormalForeground}" TextAlignment="Center" HorizontalAlignment="Center"   
+                                                 Text="{TemplateBinding Header}"  />
+                                    <Grid x:Name="_gridclose" Grid.Column="1"  >
+                                        <Border x:Name="_borderbg" Background="Black" Opacity="0" />
+                                        <local:ButtonEx x:Name="PART_Close_TabItem" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                                        Background="Transparent" Visibility="Visible" Icon="{TemplateBinding CloseIcon}"  
+                                                        ButtonType="Icon" />
+                                    </Grid>
+                                </Grid>
+                            </DockPanel>
+
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="LogoIcon" Value="{x:Null}">
+                                <Setter TargetName="_logo" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                            <Trigger Property="IsCanClose" Value="false">
+                                <Setter TargetName="_gridclose" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="_col_close" Property="Width" Value="0"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="_bordertop" Property="Background" Value="{Binding SelectedBackgound,RelativeSource={RelativeSource TemplatedParent}}" />
+                                <Setter TargetName="_txt"  Property="Foreground" Value="{Binding SelectedForeground,RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="true"/>
+                                    <Condition Property="IsSelected" Value="false"/>
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="_txt"  Property="Foreground" Value="{Binding OverForeground,RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Setter TargetName="_bordertop"  Property="Background" Value="{Binding OverBackgound,RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
+            <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -64,5 +135,18 @@
             <wk:WebKitBrowser x:Name="Viewer" Dock="Fill"></wk:WebKitBrowser>
         </WindowsFormsHost>
 
+        <TabControl Grid.Row="2" Foreground="Black" Background="Transparent" BorderThickness="0">
+            <local:TabItemClose Cursor="Hand" Header="音乐电台" Height="20" Width="100" NormalBackground="#33ffffff">
+                <Grid Background="#aaffffff">
+                    <TextBlock Text="音乐电台"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+            </local:TabItemClose>
+
+            <local:TabItemClose Cursor="Hand" Header="Mv电台" Height="20" Width="100" NormalBackground="#33ffffff">
+                <Grid Background="#aaffffff">
+                    <TextBlock Text="Mv电台" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+            </local:TabItemClose>
+        </TabControl>
     </Grid>
 </fw:AcrylicWindow>
