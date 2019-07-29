@@ -1,8 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:ApolloBrowser">
-    
-    <Style TargetType="{x:Type local:TabItemClose}">
+                    xmlns:local="clr-namespace:ApolloBrowser"
+                    xmlns:controls="clr-namespace:ApolloBrowser.Controls">
+
+    <Style TargetType="{x:Type controls:TabItemClose}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Foreground" Value="#666666"/>
@@ -18,7 +19,7 @@
         <Setter Property="SelectedForeground" Value="White"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:TabItemClose}">
+                <ControlTemplate TargetType="{x:Type controls:TabItemClose}">
                     <Border x:Name="_bordertop" Width="{TemplateBinding Width}" MaxWidth="{TemplateBinding MaxWidth}" 
                             Height="{TemplateBinding Height}" CornerRadius="{TemplateBinding CornerRadius}"  
                             Background="{TemplateBinding NormalBackground}" BorderThickness="{TemplateBinding BorderThickness}"
@@ -38,7 +39,7 @@
                                              Text="{TemplateBinding Header}"/>
                                 <Grid x:Name="_gridclose" Grid.Column="1"  >
                                     <Border x:Name="_borderbg" Background="Black" Opacity="0" />
-                                    <local:ButtonEx x:Name="PART_Close_TabItem" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                    <controls:ButtonEx x:Name="PART_Close_TabItem" HorizontalAlignment="Center" VerticalAlignment="Center" 
                                                     Background="Transparent" Visibility="Visible" Icon="{TemplateBinding CloseIcon}"  
                                                     ButtonType="Icon" />
                                 </Grid>
@@ -84,7 +85,7 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
 
-    <Style TargetType="{x:Type local:ButtonEx}">
+    <Style TargetType="{x:Type controls:ButtonEx}">
         <Style.Triggers>
             <Trigger Property="ButtonType" Value="Normal">
                 <Setter Property="Background" Value="#43a9c7"/>
@@ -97,7 +98,7 @@
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type local:ButtonEx}">
+                        <ControlTemplate TargetType="{x:Type controls:ButtonEx}">
                             <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" SnapsToDevicePixels="True">
                                 <TextBlock x:Name="txt" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
@@ -121,7 +122,7 @@
                 <Setter Property="Cursor" Value="Hand"/>
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type local:ButtonEx}">
+                        <ControlTemplate TargetType="{x:Type controls:ButtonEx}">
                             <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                                 <Image x:Name="Img" VerticalAlignment="Center" HorizontalAlignment="Center" Source="{TemplateBinding Icon}" Stretch="None"/>
                             </Border>
@@ -144,7 +145,7 @@
                 <Setter Property="MousePressedForeground" Value="#002c99"/>
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type local:ButtonEx}">
+                        <ControlTemplate TargetType="{x:Type controls:ButtonEx}">
                             <TextBlock x:Name="txt" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -165,7 +166,7 @@
                 <Setter Property="MousePressedForeground" Value="#555"/>
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type local:ButtonEx}">
+                        <ControlTemplate TargetType="{x:Type controls:ButtonEx}">
                             <Border>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                     <Image Source="{TemplateBinding Icon}" Stretch="None"/>

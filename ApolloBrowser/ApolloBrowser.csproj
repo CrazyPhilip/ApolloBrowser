@@ -71,8 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ButtonEx.cs" />
-    <Compile Include="TabItemClose.cs" />
+    <Compile Include="Controls\ButtonEx.cs" />
+    <Compile Include="Controls\TabItemAdd.cs" />
+    <Compile Include="Controls\TabItemClose.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

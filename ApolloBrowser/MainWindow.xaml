@@ -6,6 +6,7 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:wk="clr-namespace:WebKit;assembly=WebKitBrowser"
         xmlns:local="clr-namespace:ApolloBrowser"
+        xmlns:controls="clr-namespace:ApolloBrowser.Controls"
         mc:Ignorable="d"
         Title="Apollo Browser" Height="450" Width="800"
         WindowStartupLocation="CenterScreen" Closed="MetroWindow_Closed"
@@ -14,7 +15,6 @@
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -51,22 +51,21 @@
             </Grid>
         </fw:DropShadowPanel>
 
-        <WindowsFormsHost Grid.Row="1" Margin="5">
-            <wk:WebKitBrowser x:Name="Viewer" Dock="Fill"></wk:WebKitBrowser>
-        </WindowsFormsHost>
+        <TabControl Grid.Row="1" Foreground="Black" Background="Transparent" BorderThickness="0">
+            <controls:TabItemClose Cursor="Hand" Header="音乐电台" Height="20" Width="100" NormalBackground="#33ffffff">
+                <WindowsFormsHost Margin="5">
+                    <wk:WebKitBrowser x:Name="Viewer" Dock="Fill"></wk:WebKitBrowser>
+                </WindowsFormsHost>
+            </controls:TabItemClose>
 
-        <TabControl Grid.Row="2" Foreground="Black" Background="Transparent" BorderThickness="0">
-            <local:TabItemClose Cursor="Hand" Header="音乐电台" Height="20" Width="100" NormalBackground="#33ffffff">
-                <Grid Background="#aaffffff">
-                    <TextBlock Text="音乐电台"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </Grid>
-            </local:TabItemClose>
-
-            <local:TabItemClose Cursor="Hand" Header="Mv电台" Height="20" Width="100" NormalBackground="#33ffffff">
+            <controls:TabItemClose Cursor="Hand" Header="Mv电台" Height="20" Width="100" NormalBackground="#33ffffff">
                 <Grid Background="#aaffffff">
                     <TextBlock Text="Mv电台" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Grid>
-            </local:TabItemClose>
+            </controls:TabItemClose>
+
+            <controls:TabItemClose Cursor="Hand" Height="20" Width="20" NormalBackground="#33ffffff"/>
+
         </TabControl>
     </Grid>
 </fw:AcrylicWindow>
