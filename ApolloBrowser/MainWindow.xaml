@@ -64,7 +64,7 @@
                 </Grid>
             </controls:TabItemClose>
 
-            <controls:TabItemClose Cursor="Hand" Height="20" Width="20" NormalBackground="#33ffffff"/>
+            <controls:TabItemAdd Cursor="Hand" Height="20" Width="20" NormalBackground="#33ffffff"/>
 
         </TabControl>
     </Grid>

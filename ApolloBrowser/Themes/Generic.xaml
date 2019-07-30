@@ -31,10 +31,10 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type local:TabItemAdd}">
+    <Style TargetType="{x:Type controls:TabItemAdd}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:TabItemAdd}">
+                <ControlTemplate TargetType="{x:Type controls:TabItemAdd}">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
