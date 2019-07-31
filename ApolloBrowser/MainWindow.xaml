@@ -51,8 +51,8 @@
             </Grid>
         </fw:DropShadowPanel>
 
-        <TabControl Grid.Row="1" Foreground="Black" Background="Transparent" BorderThickness="0">
-            <controls:TabItemAdd Cursor="Hand" Height="20" Width="20" NormalBackground="#33ffffff"/>
+        <TabControl Grid.Row="1" Foreground="Black" Background="Transparent" BorderThickness="0" SelectedIndex="1">
+            <controls:TabItemAdd x:Name="AddTabItem" Cursor="Hand" Height="20" Width="20" NormalBackground="#ca5100"/>
             
             <controls:TabItemClose Cursor="Hand" Header="音乐电台" Height="20" Width="100" NormalBackground="#33ffffff">
                 <WindowsFormsHost Margin="5">
