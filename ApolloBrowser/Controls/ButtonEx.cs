@@ -102,6 +102,15 @@ namespace ApolloBrowser.Controls
                 RoutedEventArgs args = new RoutedEventArgs(TabItemClose.CloseItemEvent, itemclose);
                 itemclose.RaiseEvent(args);
             }
+            else if (!string.IsNullOrEmpty(Name) && Name == "PART_Add_TabItem")
+            {
+                TabItemAdd itemclose = FindVisualParent<TabItemAdd>(this);
+                TabItemClose newitemclose = new TabItemClose();
+                newitemclose.Header = "新窗口...";
+                (itemclose.Parent as TabControl).Items.Add(newitemclose);
+                RoutedEventArgs args = new RoutedEventArgs(TabItemClose.CloseItemEvent, itemclose);
+                itemclose.RaiseEvent(args);
+            }
 
         }
 
